@@ -29,21 +29,21 @@ tshirtTheme.addEventListener('change', (e) => {
   if (e.target.value === 'js puns') {
     tshirtColorsDiv.style.display = '';
     tshirtColors.selectedIndex = 0;
-    tshirtColors[0].style.display = '';
-    tshirtColors[1].style.display = '';
-    tshirtColors[2].style.display = '';
-    tshirtColors[3].style.display = 'none';
-    tshirtColors[4].style.display = 'none';
-    tshirtColors[5].style.display = 'none';
+    for(let i=0; i<3; i++) {
+      tshirtColors[i].style.display = '';
+    }
+    for(let i=3; i<6; i++) {
+      tshirtColors[i].style.display = 'none';
+    }
   } else if (e.target.value === 'heart js') {
     tshirtColorsDiv.style.display = '';
     tshirtColors.selectedIndex = 3;
-    tshirtColors[0].style.display = 'none';
-    tshirtColors[1].style.display = 'none';
-    tshirtColors[2].style.display = 'none';
-    tshirtColors[3].style.display = '';
-    tshirtColors[4].style.display = '';
-    tshirtColors[5].style.display = '';
+    for(let i=0; i<3; i++) {
+      tshirtColors[i].style.display = 'none';
+    }
+    for(let i=3; i<6; i++) {
+      tshirtColors[i].style.display = '';
+    }
   } else {
     tshirtColorsDiv.style.display = 'none';
   }
