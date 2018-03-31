@@ -5,11 +5,15 @@ const tshirtTheme = document.querySelector('#design');
 const tshirtColorsDiv = document.querySelector('#colors-js-puns');
 const tshirtColors = document.querySelector('#color');
 const activities = document.querySelector('.activities');
-const activitiesCheckboxes = document.querySelectorAll('fieldset.activities > label > input');
+const activitiesCheckboxes = document.querySelectorAll('fieldset.activities label input');
 const p = document.createElement('p');
 let totalCost = 0;
 activities.appendChild(p);
-
+const paymentOptions = document.querySelector('#payment');
+const $paymentOptions = $('#payment');
+const $creditcardDiv = $('#credit-card');
+const $paypalDiv = $('#paypal');
+const $bitcoinDiv = $('#bitcoin');
 // Set focus on the first text field on page-load
 nameField.focus();
 
@@ -122,7 +126,7 @@ const toggleCheckbox = (e) => {
     }
   }
 }
-
+// As a user selects activities, a running total should display below the list of checkboxes. For example, if the user selects "Main Conference", then Total: $200 should appear. If they add 1 workshop, the total should change to Total: $300.
 const printTotal = (e) => {
   const isChecked = e.target.checked;
   const calculateTotal = (e) => {
@@ -141,3 +145,31 @@ const printTotal = (e) => {
     p.style.display = '';
   }
 }
+
+// Payment Info section of the form:
+// Display payment sections based on the payment option chosen in the select menu
+  // The "Credit Card" payment option should be selected by default
+const paymentDefault = () => {
+  $paymentOptions.val('credit card');
+  $paypalDiv.hide();
+  $bitcoinDiv.hide();
+}
+paymentDefault();
+  // When "Credit Card" option selected, display the #credit-card div, and hide the "Paypal" and "Bitcoin information.
+  // When a user selects the "PayPal" payment option, the Paypal information should display, and the credit card and “Bitcoin” information should be hidden.
+  // When a user selects the "Bitcoin" payment option, the Bitcoin information should display, and the credit card and “PayPal” information should be hidden.
+$paymentOptions.on('change', (e)=>{
+  if(e.target.value === 'credit card') {
+    $creditcardDiv.show();
+    $paypalDiv.hide();
+    $bitcoinDiv.hide();
+  } else if(e.target.value === 'paypal') {
+    $creditcardDiv.hide();
+    $paypalDiv.show();
+    $bitcoinDiv.hide();
+  } else if(e.target.value === 'bitcoin') {
+    $creditcardDiv.hide();
+    $paypalDiv.hide();
+    $bitcoinDiv.show();
+  }
+});
