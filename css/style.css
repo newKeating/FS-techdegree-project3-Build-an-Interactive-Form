@@ -118,6 +118,17 @@ button:hover {
   text-decoration: line-through;
 }
 
+.invaild-color {
+  color: red;
+}
+.invaild-border {
+  border: 2px solid red;
+}
+
+.error {
+  margin-bottom: 0.8em;
+}
+
 /* =================================
   Page Styles
 ==================================== */
