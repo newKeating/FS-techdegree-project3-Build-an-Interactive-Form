@@ -188,12 +188,6 @@ $paymentOptions.on('change', (e)=>{
 // if validator functions return false
   // show error message function
   // error style function
-const nameValidator = () => {
-  nameInput.addEventListener('input', (e) => {
-    return /\S+/.test(e.target.value)
-  });
-}
-
 
 let nameValid = /\S+/.test(nameInput.value);
 let emailValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailInput.value);
@@ -211,11 +205,18 @@ let zipValid = /^\d{5}$/.test(zipcodeInput.value);
 let cvvValid = /^\d{3}$/.test(cvvInput.value);
 
 form.addEventListener('submit', (e) => {
-  if(!nameValidator()) {
+  if(!nameValid) {
     e.preventDefault();
     $nameError.show();
-    nameInput.focus();
-  } else if(nameValidator()) {
-    $nameError.hide();
+    nameInput.addEventListener("keypress", (e) => {
+      $nameError.hide();
+    });
+  }
+  if(!emailValid) {
+    e.preventDefault();
+    $emailError.show();
+    emailInput.addEventListener("keypress", (e) => {
+      $emailError.hide();
+    });
   }
 });
