@@ -19,13 +19,20 @@ const cardNumInput = document.querySelector('#cc-num');
 const zipcodeInput = document.querySelector('#zip');
 const cvvInput = document.querySelector('#cvv');
 const form = document.querySelector('form');
-const $errors = $('.error');
+const $errors = $('.error-message');
 $errors.hide();
 const $nameError = $('#name-error');
 const $emailError = $('#email-error-wrongType');
+const $checkboxError = $('#activities-error');
 const $ccNumError = $('#cc-error');
 const $zipError = $('#zip-error');
 const $cvvError = $('#cvv-error');
+const nameLabel = document.querySelector('#name-label');
+const emailLabel = document.querySelector('#mail-label');
+const checkboxLegend = document.querySelector('#activity-legend');
+const ccNumLabel = document.querySelector('#cc-num-label');
+const zipLabel = document.querySelector('#zip-label');
+const cvvLabel = document.querySelector('#cvv-label');
 
 // A text field that will be revealed when the "Other" option is selected from the "Job Role" drop down menu.
 otherJobTitle.style.display = 'none';
@@ -181,42 +188,76 @@ $paymentOptions.on('change', (e)=>{
     // - The zipcode field should accept a 5-digit number
     // - The CVV should only accept a number that is exactly 3 digits long
 
-// if any validator returns false it's not valid
-  // validator functions
-    // name field validator
-
-// if validator functions return false
-  // show error message function
-  // error style function
-
-let nameValid = /\S+/.test(nameInput.value);
-let emailValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailInput.value);
-let checkboxValid = () => {
-  for(let i=0; i<activitiesCheckboxes.length; i++) {
-    if(activitiesCheckboxes[i].checked) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
-let ccNumValid = /^\d{13,16}$/.test(cardNumInput.value);
-let zipValid = /^\d{5}$/.test(zipcodeInput.value);
-let cvvValid = /^\d{3}$/.test(cvvInput.value);
-
 form.addEventListener('submit', (e) => {
-  if(!nameValid) {
+  if(nameInput.value.match(/\S+/) === null) {
     e.preventDefault();
     $nameError.show();
+    nameLabel.className = 'invalid-color';
+    nameInput.className = 'invalid-border';
     nameInput.addEventListener("keypress", (e) => {
       $nameError.hide();
+      nameLabel.classList.remove('invalid-color');
+      nameInput.classList.remove('invalid-border');
     });
   }
-  if(!emailValid) {
+  if(emailInput.value.match(/^[^@]+@[^@.]+\.[a-z]+$/i) === null) {
     e.preventDefault();
     $emailError.show();
+    emailLabel.className = 'invalid-color';
+    emailInput.className = 'invalid-border';
     emailInput.addEventListener("keypress", (e) => {
       $emailError.hide();
+      emailLabel.classList.remove('invalid-color');
+      emailInput.classList.remove('invalid-border');
+    });
+  }
+  const checkboxValid = () => {
+    for(let i=0; i<activitiesCheckboxes.length; i++) {
+      if(activitiesCheckboxes[i].checked) {
+        return true;
+      }
+    }
+  }
+  if(!checkboxValid()) {
+    e.preventDefault();
+    $checkboxError.show();
+    checkboxLegend.className = 'invalid-color';
+    activities.addEventListener('change', () => {
+      $checkboxError.hide();
+      checkboxLegend.classList.remove('invalid-color');
+    });
+  }
+  if(cardNumInput.value.match(/^\d{13,16}$/) === null) {
+    e.preventDefault();
+    $ccNumError.show();
+    ccNumLabel.className = 'invalid-color';
+    cardNumInput.className = 'invalid-border';
+    cardNumInput.addEventListener("keypress", (e) => {
+      $ccNumError.hide();
+      ccNumLabel.classList.remove('invalid-color');
+      cardNumInput.classList.remove('invalid-border');
+    });
+  }
+  if(zipcodeInput.value.match(/^\d{5}$/) === null) {
+    e.preventDefault();
+    $zipError.show();
+    zipLabel.className = 'invalid-color';
+    zipcodeInput.className = 'invalid-border';
+    zipcodeInput.addEventListener("keypress", (e) => {
+      $zipError.hide();
+      zipLabel.classList.remove('invalid-color');
+      zipcodeInput.classList.remove('invalid-border');
+    });
+  }
+  if(cvvInput.value.match(/^\d{3}$/) === null) {
+    e.preventDefault();
+    $cvvError.show();
+    cvvLabel.className = 'invalid-color';
+    cvvInput.className = 'invalid-border';
+    cvvInput.addEventListener("keypress", (e) => {
+      $cvvError.hide();
+      cvvLabel.classList.remove('invalid-color');
+      cvvInput.classList.remove('invalid-border');
     });
   }
 });

@@ -20,13 +20,13 @@
       <fieldset>
         <legend>Basic Info</legend>
 
-        <label for="name">Name:</label>
+        <label id="name-label" for="name">Name:</label>
         <input type="text" id="name" name="user_name" autofocus required>
-        <div id="name-error" class="error" aria-live="polite">* Oops, you forgot to put your name. Please, type your name.</div>
+        <div id="name-error" class="error-message" aria-live="polite">* Oops, you forgot to put your name. Please, type your name.</div>
 
-        <label for="mail">Email:</label>
+        <label id="mail-label" for="mail">Email:</label>
         <input type="email" id="mail" name="user_email" required>
-        <div id="email-error-wrongType" class="error" aria-live="polite">* Oops, this is not a valid email type.</div>
+        <div id="email-error-wrongType" class="error-message" aria-live="polite">* Oops, this is not a valid email type.</div>
 
         <label for="title">Job Role</label>
         <select id="title" name="user_title">
@@ -77,7 +77,8 @@
       </fieldset>
 
       <fieldset class="activities">
-        <legend>Register for Activities</legend>
+        <legend id="activity-legend">Register for Activities</legend>
+        <div id="activities-error" class="error-message" aria-live="polite">* You must check at least one checkbox.</div>
         <label><input type="checkbox" value="200" name="all"> Main Conference — $200</label>
         <label><input type="checkbox" value="100" name="js-frameworks"> JavaScript Frameworks Workshop — Tuesday 9am-12pm, $100</label>
         <label><input type="checkbox" value="100" name="js-libs"> JavaScript Libraries Workshop — Tuesday 1pm-4pm, $100</label>
@@ -85,7 +86,6 @@
         <label><input type="checkbox" value="100" name="node"> Node.js Workshop — Tuesday 1pm-4pm, $100</label>
         <label><input type="checkbox" value="100" name="build-tools"> Build tools Workshop — Wednesday 9am-12pm, $100</label>
         <label><input type="checkbox" value="100" name="npm"> npm Workshop — Wednesday 1pm-4pm, $100</label>
-        <div id="activities-error" class="error" aria-live="polite">* You must check at least one checkbox.</div>
       </fieldset>
       <fieldset>
         <legend>Payment Info</legend>
@@ -101,21 +101,18 @@
         <div id="credit-card" class="credit-card">
 
           <div class="col-6 col">
-            <label for="cc-num">Card Number:</label>
+            <label id="cc-num-label" for="cc-num">Card Number:</label>
         	  <input id="cc-num" name="user_cc-num" type="text" required minlength="13" maxlength="16">
-            <div id="cc-error" class="error" aria-live="polite">* Card numbers must be between 13 to 16 digits long.</div>
           </div>
 
           <div class="col-3 col">
-            <label for="zip">Zip Code:</label>
+            <label id="zip-label" for="zip">Zip Code:</label>
             <input id="zip" name="user_zip" type="text">
-            <div id="zip-error" class="error" aria-live="polite">* The zipcode must be 5 digits long.</div>
           </div>
 
           <div class="col-3 col">
-            <label for="cvv">CVV:</label>
+            <label id="cvv-label" for="cvv">CVV:</label>
             <input id="cvv" name="user_cvv" type="text">
-            <div id="cvv-error" class="error" aria-live="polite">* The CVV must be 3 digits long</div>
           </div>
 
           <label for="exp-month">Expiration Date:</label>
@@ -141,6 +138,10 @@
             <option value="2019">2019</option>
             <option value="2020">2020</option>
           </select>
+
+          <div id="cc-error" class="error-message" aria-live="polite">* Card numbers must be between 13 to 16 digits long.</div>
+          <div id="zip-error" class="error-message" aria-live="polite">* The zipcode must be 5 digits long.</div>
+          <div id="cvv-error" class="error-message" aria-live="polite">* The CVV must be 3 digits long</div>
         </div>
 
         <div id="paypal">

@@ -118,14 +118,14 @@ button:hover {
   text-decoration: line-through;
 }
 
-.invaild-color {
+.invalid-color {
   color: red;
 }
-.invaild-border {
+.invalid-border {
   border: 2px solid red;
 }
 
-.error {
+.error-message {
   margin-bottom: 0.8em;
 }
 
