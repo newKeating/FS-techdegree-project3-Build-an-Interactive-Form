@@ -227,37 +227,41 @@ form.addEventListener('submit', (e) => {
       checkboxLegend.classList.remove('invalid-color');
     });
   }
-  if(cardNumInput.value.match(/^\d{13,16}$/) === null) {
-    e.preventDefault();
-    $ccNumError.show();
-    ccNumLabel.className = 'invalid-color';
-    cardNumInput.className = 'invalid-border';
-    cardNumInput.addEventListener("keypress", (e) => {
-      $ccNumError.hide();
-      ccNumLabel.classList.remove('invalid-color');
-      cardNumInput.classList.remove('invalid-border');
-    });
-  }
-  if(zipcodeInput.value.match(/^\d{5}$/) === null) {
-    e.preventDefault();
-    $zipError.show();
-    zipLabel.className = 'invalid-color';
-    zipcodeInput.className = 'invalid-border';
-    zipcodeInput.addEventListener("keypress", (e) => {
-      $zipError.hide();
-      zipLabel.classList.remove('invalid-color');
-      zipcodeInput.classList.remove('invalid-border');
-    });
-  }
-  if(cvvInput.value.match(/^\d{3}$/) === null) {
-    e.preventDefault();
-    $cvvError.show();
-    cvvLabel.className = 'invalid-color';
-    cvvInput.className = 'invalid-border';
-    cvvInput.addEventListener("keypress", (e) => {
-      $cvvError.hide();
-      cvvLabel.classList.remove('invalid-color');
-      cvvInput.classList.remove('invalid-border');
-    });
+.
+  if (paymentOptions.value === 'credit card') {
+  // only when credit card option is selected, the credit-card validations work.
+    if(cardNumInput.value.match(/^\d{13,16}$/) === null) {
+      e.preventDefault();
+      $ccNumError.show();
+      ccNumLabel.className = 'invalid-color';
+      cardNumInput.className = 'invalid-border';
+      cardNumInput.addEventListener("keypress", (e) => {
+        $ccNumError.hide();
+        ccNumLabel.classList.remove('invalid-color');
+        cardNumInput.classList.remove('invalid-border');
+      });
+    }
+    if(zipcodeInput.value.match(/^\d{5}$/) === null) {
+      e.preventDefault();
+      $zipError.show();
+      zipLabel.className = 'invalid-color';
+      zipcodeInput.className = 'invalid-border';
+      zipcodeInput.addEventListener("keypress", (e) => {
+        $zipError.hide();
+        zipLabel.classList.remove('invalid-color');
+        zipcodeInput.classList.remove('invalid-border');
+      });
+    }
+    if(cvvInput.value.match(/^\d{3}$/) === null) {
+      e.preventDefault();
+      $cvvError.show();
+      cvvLabel.className = 'invalid-color';
+      cvvInput.className = 'invalid-border';
+      cvvInput.addEventListener("keypress", (e) => {
+        $cvvError.hide();
+        cvvLabel.classList.remove('invalid-color');
+        cvvInput.classList.remove('invalid-border');
+      });
+    }
   }
 });
