@@ -227,7 +227,6 @@ form.addEventListener('submit', (e) => {
       checkboxLegend.classList.remove('invalid-color');
     });
   }
-.
   if (paymentOptions.value === 'credit card') {
   // only when credit card option is selected, the credit-card validations work.
     if(cardNumInput.value.match(/^\d{13,16}$/) === null) {
