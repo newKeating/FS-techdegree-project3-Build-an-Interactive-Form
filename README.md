@@ -1,6 +1,6 @@
 # TeamTreehouse FullStack JavaScript Techdegree Project3
 # Build an Interactive Form
-![alt text](https://github.com/newKeating/FS-techdegree-project2-Pagination/blob/master/Project2-Pass-Confirmed.png)
+![alt text](https://github.com/newKeating/FS-techdegree-project3-Build-an-Interactive-Form/blob/master/Project3-Pass-Confirmed.png)
 
 ## About this Project
 In this project, you'll create an interactive registration form for "FullStack Conf." Using the supplied HTML and CSS files, you'll use JavaScript to enhance the form by adding interactivity. You’ll also make the form more user-friendly by providing helpful error messages when the user enters invalid information into the form fields. You can use plain JavaScript or jQuery –– it's up to you!
