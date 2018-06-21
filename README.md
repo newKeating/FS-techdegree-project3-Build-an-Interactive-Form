@@ -53,3 +53,10 @@ Form validation:
   - Credit card field should only accept a number between 13 and 16 digits
   - The zipcode field should accept a 5-digit number
   - The CVV should only accept a number that is exactly 3 digits long
+
+Form validation messages:
+
+- Provide some kind of indication when there’s a validation error. The field’s borders could turn red, for example, or a message could appear near the field or at the top of the form
+- There should be an error indication for the name field, email field, “Register for Activities” checkboxes, credit card number, zip code, and CVV
+
+When JavaScript is switched off or unavailable, the user should still have access to all form fields and payment information. For example, the “Other” text field in the "Job Role" menu should be visible on the page when JavaScript is switched off, and all information for Bitcoin, Paypal or Credit Card payments should be visible.
